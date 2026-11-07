@@ -4,7 +4,6 @@
 
 When two asteroids collide, the fragments stay on very similar orbits for millions of years. These groups are called *asteroid families*. Astronomers find them by clustering asteroids in orbital-element space. This project asks whether a standard data-mining pipeline, with a warehouse, OLAP, clustering and association rules, can find them too, and tests the answer against the official family catalogue.
 
-Author: **Anirban Biswas**
 
 ![Kirkwood gaps in the asteroid belt](figures/eda_kirkwood.png)
 
