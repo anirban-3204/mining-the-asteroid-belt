@@ -4,7 +4,6 @@
 
 When two asteroids collide, the fragments stay on very similar orbits for millions of years. These groups are called *asteroid families*. Astronomers find them by clustering asteroids in orbital-element space. This project asks whether a standard data-mining pipeline, with a warehouse, OLAP, clustering and association rules, can find them too, and tests the answer against the official family catalogue.
 
-
 ![Kirkwood gaps in the asteroid belt](figures/eda_kirkwood.png)
 
 ## Data
@@ -73,10 +72,23 @@ jupyter lab asteroid_families_dmw.ipynb
 
 The full notebook runs in under a minute in our tests. It was checked with Python 3.11 and 3.13, from the minimum versions in `requirements.txt` up to current releases, and gives identical results. Figures are written to `figures/`.
 
+### Preprocessing only
+
+`preprocess.py` runs the extract and transform steps (notebook sections 1-2) on their own and saves the clean dataset: 382,730 asteroids x 20 columns. Its output is identical to the notebook's dataset.
+
+```bash
+python preprocess.py                       # writes data/clean.parquet
+python preprocess.py --out data/clean.csv  # or CSV
+python preprocess.py --help                # other options, e.g. --data-dir
+```
+
+Columns: the catalogue fields (`a`, `e`, `sini`, `H`, their errors, `g`, `s`, `n_opp`, `packed`, `name`), `number`, the reference label (`fam_id`, `fam_name`; `-1` / `Unassigned` if none), and the derived attributes `incl_deg`, `zone`, `a_bin`, `incl_class`, `size_class`.
+
 ## Repository layout
 
 ```
 asteroid_families_dmw.ipynb   the full analysis, with outputs
+preprocess.py                 builds the clean dataset on its own
 figures/                      plots saved by the notebook
 data/README.md                where to get the data
 requirements.txt
