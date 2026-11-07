@@ -1,0 +1,9 @@
+# Python 3.11+
+# Tested with these minimum versions and with current releases (identical results).
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+scikit-learn>=1.4
+duckdb>=1.2
+mlxtend>=0.23.4
+jupyterlab>=4.0
